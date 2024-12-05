@@ -1,0 +1,329 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background-color: black; 
+    background-image: url('../assets/bg00.jpg'); 
+    font-family: 'Orbitron', sans-serif; 
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-size: 15px;
+
+}
+
+header {
+    position: fixed;
+    top: 7;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(90deg, #000000, #000000 77%, #000000);
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+}
+
+footer{
+    height: 30px;
+    background: 000000;
+    
+}
+
+main {
+    margin-top: 50px;
+    position: relative;
+    height: calc(100vh - 80px); /* delete the height of header and footer */
+    overflow: hidden;
+}
+
+#container {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.photo {
+    position: absolute;
+    text-align: center;
+}
+.photo img {
+    width: 15vw; 
+    max-width: 600px;
+    min-width: 100px;
+    transition: transform 1s ease, filter 1s ease, opacity 1s ease, z-index 1s ease;
+    border-radius: 10px;
+    position: relative; 
+    z-index: 1; 
+    opacity: 1; 
+    filter: none; 
+}
+.photo:hover img {
+    transform: scale(1.2); 
+    filter: brightness(1.1) saturate(1.1);
+    transition: transform 0.5s ease, filter 0.5s ease; 
+    z-index: 10; 
+}
+#container .photo:not(:hover) img {
+    opacity: 0.5;
+}
+#container:not(:hover) .photo img {
+    opacity: 1;
+    filter: none; 
+}
+.photo img {
+    pointer-events: all; 
+}
+.photo span {
+    display: block;
+    color: white;
+    font-size: 10px;
+    margin-top: 2px;
+    text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8); 
+    text-align: right;
+}
+.photo a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.scrolling-title {
+    width: 75%;
+    display: inline-block;
+    white-space: nowrap; 
+    color: white; 
+    font-size: 24px;
+    animation: scroll-left 27s linear infinite; 
+}
+@keyframes scroll-left {
+    from {
+        transform: translateX(100%); 
+    }
+    to {
+        transform: translateX(-100%); 
+    }
+}
+
+.bottom-bar {
+    margin: 0; 
+    padding: 10px 20px; 
+    border-top: none;
+    position: fixed;
+    bottom: 0; 
+    width: 100%; 
+    background-color: black; 
+    color: white;
+    font-size: 16px; 
+    display: flex; 
+    justify-content: space-between;
+    align-items: center; 
+    padding: 10px 20px; 
+    margin: 0; 
+    border-top: 2px solid transparent;
+    z-index: 9999; 
+}
+.bottom-bar span {
+    font-weight: bold;
+}
+.bottom-bar a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 0 2.7%; 
+    align-items: left; 
+}
+.bottom-bar a:hover {
+    color: #ccc; 
+    text-decoration: underline; 
+}
+
+@keyframes spin-clockwise {
+    from { transform: rotate(var(--start-angle)); }
+    to { transform: rotate(calc(360deg + var(--start-angle))); }
+}
+@keyframes spin-counterclockwise {
+    from { transform: rotate(var(--start-angle)); }
+    to { transform: rotate(calc(-360deg + var(--start-angle))); }
+}
+.photo:nth-child(1) img {
+    --start-angle: 10deg; 
+    animation: spin-clockwise 377s linear infinite; 
+}
+.photo:nth-child(2) img {
+    --start-angle: 0deg; 
+    animation: spin-counterclockwise 377s linear infinite;
+}
+.photo:nth-child(3) img {
+    --start-angle: 45deg; 
+    animation: spin-clockwise 377s linear infinite;
+}
+.photo:nth-child(4) img {
+    --start-angle: 135deg;
+    animation: spin-counterclockwise 377s linear infinite;
+}
+.photo:nth-child(5) img {
+    --start-angle: 20deg; 
+    animation: spin-counterclockwise 377s linear infinite;
+}
+.photo:nth-child(6) img {
+    --start-angle: -20deg; 
+    animation: spin-counterclockwise 377s linear infinite;
+}
+.photo:nth-child(7) img {
+    --start-angle: 20deg; 
+    animation: spin-counterclockwise 377s linear infinite;
+}
+
+@media (max-width: 768px) {
+    .photo img {
+        max-width: 50px; 
+    }
+
+    .photo span {
+        font-size: 12px;
+    }
+
+    .scrolling-text {
+        font-size: 18px;
+    }
+} 
+
+
+
+.gallery-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.image-gallery {
+    width: 75%; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    overflow-y: auto; 
+    background-color: #000;
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+    padding: 1.7% 2% 5% 4%; 
+    
+}
+.image-gallery:focus {
+    outline: 2px solid #333333; 
+}
+.image-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+
+.gallery-group {
+    margin-bottom: 40px;
+}
+.gallery-row {
+    display: flex;
+    gap: 2%;
+}
+.gallery-row img {
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 2%;
+} 
+.gallery-row img.vertical {
+    width: 22.5%; 
+    aspect-ratio: 3 / 4; 
+}
+.gallery-row img.horizontal {
+    width: 40%; 
+    aspect-ratio: 4 / 3;
+}
+.gallery-row img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.city-list {
+    position: fixed;
+    top: 50px;
+    right: 0; 
+    width: 25%; 
+    height: 100%;
+    background-color: #111; 
+    padding: 20px;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; 
+    z-index: 777;
+}
+.city-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.city-list li {
+    margin-bottom: 20px;
+}
+.city-list a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #ccc;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.city-list a.active {
+    color: #fff;
+    background-color: #333333;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.city-list a:hover {
+    color: #333333;
+}
+
+.back-to-top {
+    display: block;
+    margin-top: auto;
+    text-align: left;
+    left:0;
+}
+.back-to-top img {
+    width: 47px; 
+    height: 47px; 
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+.back-to-top img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        flex-direction: column;
+    }
+
+    .image-gallery, .city-list {
+        width: 100%;
+    }
+
+    .gallery-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .city-list ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+}
