@@ -1,1 +1,2 @@
 # 539_final
+This website is my PhotoLog Personal Website showcasing a curated collection of photos taken during my travels to various destinations. Each section of the website highlights a different city or location, with images organized into visually appealing galleries. Users can explore the photos and navigate easily between different cities.
